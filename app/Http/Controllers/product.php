@@ -30,17 +30,11 @@ class product extends Controller
     }
     //
     //view product by user
-    public function userview(Request $req)
+    public function userview()
     {
-        $pname=$req->input('pname');
-        $product=DB::table('product')->select('product_id','productname','price','quantity')->where('productname',$pname)->get()->count();
-        $getproduct=DB::table('product')->select('product_id','productname','price','quantity')->where('productname',$pname)->get();
-        if($product==0)
-        {
-            $status=0;
-            return response()->json(array('status'=>$status));
-        }
-            return response()->json($getproduct);    
+        $product_data=DB::table('product')->select('product_id','productname','price','quantity')->get();
+        return response()->json($product_data);
+         
     
     }
     

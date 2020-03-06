@@ -6,6 +6,7 @@ use Closure;
 use DB;
 class checklogin
 {
+    
     /**
      * Handle an incoming request.
      *
