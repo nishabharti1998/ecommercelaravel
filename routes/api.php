@@ -17,4 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('users','User@insert');
+Route::post('/users','User@insert');
+Route::post('/checklogin','User@login_check');
+ //Route::middleware('test')->post('/admin','User@user_details');
+Route::post('/product','product@insert_data')->middleware('test');
+Route::get('/view','product@view');
+Route::post('/userview','product@userview');

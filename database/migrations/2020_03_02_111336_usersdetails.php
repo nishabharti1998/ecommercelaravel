@@ -17,10 +17,12 @@ class Usersdetails extends Migration
             $table->increments('id');
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->unique();
             $table->string('mobile')->nullable();
             $table->string('password')->nullable();
-            $table->timestamps();
+            // $table->timestamp('created_at');
+            // $table->timestamp('updated_at');
+            // $table->timestamps();
         });
     }
 
@@ -31,6 +33,8 @@ class Usersdetails extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('usersdetails', function (Blueprint $table) {
+        $table->dropUnique(['email']);
+        });
     }
 }
